@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Genshin Impact - Home</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
     
@@ -72,30 +72,50 @@
             <label for="regKonfirmasi">Konfirmasi Password:</label>
             <input type="password" id="regKonfirmasi" name="konfirmasi" required>
 
-            <label for="provinsi">Provinsi:</label>
-            <select id="provinsi" name="provinsi" required>
+            <label for="cariProvinsi">Provinsi:</label>
+            <div class="region-picker" id="pickerProvinsi">
+                <input type="search" id="cariProvinsi" class="region-search" placeholder="Pilih atau cari provinsi..." aria-label="Pilih atau cari provinsi" aria-haspopup="listbox" aria-expanded="false" aria-controls="opsiProvinsi" autocomplete="off" disabled>
+                <div id="opsiProvinsi" class="region-options" role="listbox" hidden></div>
+            </div>
+            <select id="provinsi" name="provinsi" class="region-native-select" tabindex="-1" aria-hidden="true" disabled>
                 <option value="">-- Pilih Provinsi --</option>
             </select>
+            <small id="errorProvinsi" class="error-text region-error" aria-live="polite"></small>
 
-            <label for="kabupaten">Kabupaten/Kota:</label>
-            <select id="kabupaten" name="kabupaten" required disabled>
+            <label for="cariKabupaten">Kabupaten/Kota:</label>
+            <div class="region-picker" id="pickerKabupaten">
+                <input type="search" id="cariKabupaten" class="region-search" placeholder="Pilih atau cari kabupaten/kota..." aria-label="Pilih atau cari kabupaten/kota" aria-haspopup="listbox" aria-expanded="false" aria-controls="opsiKabupaten" autocomplete="off" disabled>
+                <div id="opsiKabupaten" class="region-options" role="listbox" hidden></div>
+            </div>
+            <select id="kabupaten" name="kabupaten" class="region-native-select" tabindex="-1" aria-hidden="true" disabled>
                 <option value="">-- Pilih Kabupaten/Kota --</option>
             </select>
+            <small id="errorKabupaten" class="error-text region-error" aria-live="polite"></small>
 
-            <label for="kecamatan">Kecamatan:</label>
-            <select id="kecamatan" name="kecamatan" required disabled>
+            <label for="cariKecamatan">Kecamatan:</label>
+            <div class="region-picker" id="pickerKecamatan">
+                <input type="search" id="cariKecamatan" class="region-search" placeholder="Pilih atau cari kecamatan..." aria-label="Pilih atau cari kecamatan" aria-haspopup="listbox" aria-expanded="false" aria-controls="opsiKecamatan" autocomplete="off" disabled>
+                <div id="opsiKecamatan" class="region-options" role="listbox" hidden></div>
+            </div>
+            <select id="kecamatan" name="kecamatan" class="region-native-select" tabindex="-1" aria-hidden="true" disabled>
                 <option value="">-- Pilih Kecamatan --</option>
             </select>
+            <small id="errorKecamatan" class="error-text region-error" aria-live="polite"></small>
 
-            <label for="desa">Desa/Kelurahan:</label>
-            <select id="desa" name="desa" required disabled>
+            <label for="cariDesa">Desa/Kelurahan:</label>
+            <div class="region-picker" id="pickerDesa">
+                <input type="search" id="cariDesa" class="region-search" placeholder="Pilih atau cari desa/kelurahan..." aria-label="Pilih atau cari desa/kelurahan" aria-haspopup="listbox" aria-expanded="false" aria-controls="opsiDesa" autocomplete="off" disabled>
+                <div id="opsiDesa" class="region-options" role="listbox" hidden></div>
+            </div>
+            <select id="desa" name="desa" class="region-native-select" tabindex="-1" aria-hidden="true" disabled>
                 <option value="">-- Pilih Desa --</option>
             </select>
+            <small id="errorDesa" class="error-text region-error" aria-live="polite"></small>
 
             <button type="submit">Daftar</button>
         </form>
     </div>
 </div>
-<script src="script.js?v=3"></script>
+<script src="script.js?v=5"></script>
 </body>
 </html>
