@@ -61,6 +61,17 @@ togglePassword.addEventListener('click', function () {
     passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
 });
 
+// Tombol mata untuk menampilkan password saat pendaftaran.
+const toggleRegPassword = document.getElementById('toggleRegPassword');
+const registerPassword = document.getElementById('regPassword');
+
+toggleRegPassword.addEventListener('click', function () {
+    const showPassword = registerPassword.type === 'password';
+    registerPassword.type = showPassword ? 'text' : 'password';
+    toggleRegPassword.setAttribute('aria-label', showPassword ? 'Sembunyikan password' : 'Tampilkan password');
+    toggleRegPassword.setAttribute('aria-pressed', String(showPassword));
+});
+
 // Data wilayah di GitHub Raw dapat diakses dari browser lokal tanpa API key.
 const regionApiBase = 'https://raw.githubusercontent.com/ibnux/data-indonesia/master';
 const provinceSelect = document.getElementById('provinsi');
@@ -245,7 +256,6 @@ villageSelect.addEventListener('change', function () {
 });
 
 // Periksa kecocokan password sebelum form pendaftaran dikirim ke server.
-const registerPassword = document.getElementById('regPassword');
 const confirmationInput = document.getElementById('regKonfirmasi');
 const passwordError = document.createElement('small');
 passwordError.className = 'error-text';

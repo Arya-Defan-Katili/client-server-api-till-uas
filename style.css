@@ -225,7 +225,8 @@ nav ul li a:hover {
   padding-right: 2.8rem;
 }
 
-#togglePassword {
+#togglePassword,
+#toggleRegPassword {
   position: absolute;
   right: 0.7rem;
   border: 0;
