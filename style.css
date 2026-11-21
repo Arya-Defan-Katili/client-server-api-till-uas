@@ -1,184 +1,297 @@
 *, html {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
- }
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
- body {
-    background-color:rgb(236, 203, 153);
- }
+body {
+  background-color: rgb(236, 203, 153);
+  font-family: 'Courier New', Courier, monospace;
+}
 
- nav {
-    background-color: #fdfdff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    box-shadow: 0 4px 12px rgba(139, 94, 52, 0.15);
-   
- }
+body.no-scroll {
+  overflow: hidden;
+}
 
- nav ul {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    list-style: none;    
- }
+nav {
+  background-color: #fdfdff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 12px rgba(139, 94, 52, 0.15);
+}
 
- nav div img {
-    width: 100px;
-    height: 60px;
- }
+nav ul {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
 
- nav ul li a {
-    display: block;
-    text-decoration: none;
-    font-family: 'Courier New', Courier, monospace;
-    color: #0a0906;
-    font-weight: 600;
-    padding: 0.6rem 0.8rem;
-    border-radius: 8px;
-    transition: 0.3s ease;
-    border-bottom: 2px solid #8b5e3400;
- }
+nav div img {
+  width: 100px;
+  height: 60px;
+}
 
- nav ul li a:hover {
-    color: #ffffff;
-    background-color: #8b5e34;
-    transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(139, 94, 52, 0.25);
- }
+nav ul li a {
+  display: block;
+  text-decoration: none;
+  font-family: 'Courier New', Courier, monospace;
+  color: #0a0906;
+  font-weight: 600;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  transition: 0.3s ease;
+  border-bottom: 2px solid #8b5e3400;
+}
 
- #loginButton {
-   padding: 0.65rem 1.4rem;
-   border: 1px solid #8b5e34;
-   border-radius: 999px;
-   background-color: #8b5e34;
-   color: #fff;
-   font: 600 0.95rem 'Courier New', Courier, monospace;
-   cursor: pointer;
-   transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
- }
+nav ul li a:hover {
+  color: #ffffff;
+  background-color: #8b5e34;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(139, 94, 52, 0.25);
+}
 
- #loginButton:hover {
-   background-color: #704724;
-   border-color: #704724;
-   box-shadow: 0 4px 10px rgba(112, 71, 36, 0.25);
-   transform: translateY(-2px);
- }
+#loginButton {
+  padding: 0.65rem 1.4rem;
+  border: 1px solid #8b5e34;
+  border-radius: 999px;
+  background-color: #8b5e34;
+  color: #fff;
+  font: 600 0.95rem 'Courier New', Courier, monospace;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
 
- #loginButton:focus-visible {
-   outline: 3px solid rgba(139, 94, 52, 0.35);
-   outline-offset: 3px;
- }
+#loginButton:hover {
+  background-color: #704724;
+  border-color: #704724;
+  box-shadow: 0 4px 10px rgba(112, 71, 36, 0.25);
+  transform: translateY(-2px);
+}
 
- #loginButton:active {
-   transform: translateY(0);
- }
+#loginButton:focus-visible {
+  outline: 3px solid rgba(139, 94, 52, 0.35);
+  outline-offset: 3px;
+}
 
- .popup {
-   position: fixed;
-   inset: 0;
-   background-color: rgba(0, 0, 0, 0.5);
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   z-index: 10;
- }
+#loginButton:active {
+  transform: translateY(0);
+}
 
- .popup.hidden {
-   display: none;
- }
- 
- .login-box {
-   position: relative;
-   width: 400px;
-   padding: 2rem;
-   background-color: #fff;
-   border-radius: 8px;
-   box-shadow: 0 4px 12px rgba(139, 94, 52, 0.15);
- }
+/* Popup dapat digulir tanpa menggeser halaman di belakangnya. */
+.popup {
+  position: fixed;
+  inset: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 1.5rem 1rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  overscroll-behavior: contain;
+  z-index: 10;
+}
 
+@supports (height: 100dvh) {
+  .popup {
+    height: 100dvh;
+  }
+}
 
- .login-box h2 {
-   margin-bottom: 1.5rem;
-   font-family: 'Courier New', Courier, monospace;
-   color: #8b5e34;
-   text-align: center;
- }
+.popup.hidden {
+  display: none;
+}
 
- .login-box form {
-   display: flex;
-   flex-direction: column;
-   gap: 1rem;
- }
+.login-box {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  max-height: calc(100vh - 3rem);
+  margin: auto;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(139, 94, 52, 0.15);
+}
 
- .login-box input {
-   padding: 0.8rem;
-   border: 1px solid #ccc;
-   border-radius: 4px;
-   font-size: 1rem;
- }
+@supports (height: 100dvh) {
+  .login-box {
+    max-height: calc(100dvh - 3rem);
+  }
+}
 
- #closeButton {
-   position: absolute;
-   top: 10px;
-   right: 10px;
-   background-color: transparent;
-   border: none;
-   font-size: 1.5rem;
-   cursor: pointer;
- }
+.login-box h2 {
+  margin-bottom: 1.5rem;
+  color: #8b5e34;
+  text-align: center;
+}
 
- .password-wrapper {
-   position: relative;
-   display: flex;
-   align-items: center;
- }
+#closeButton {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.9rem;
+  color: #8b5e34;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+}
 
- .password-wrapper input {
-   width: 100%;
-   padding-right: 2.5rem;
- }
+#closeButton:hover {
+  color: #704724;
+}
 
- #togglePassword {
-   position: absolute;
-   right: 10px;
-   border: none;
-   background-color: transparent;
-   cursor: pointer;
-   font-size: 1rem;
- }
+.tabs {
+  display: flex;
+  margin: 0.5rem 0 1.2rem;
+  border-bottom: 2px solid #ecd9bd;
+}
 
-  .dashboard {
-   max-width: 900px;
-   margin: 3rem auto;
-   padding: 0 1.5rem;
- }
+.tab-btn {
+  flex: 1;
+  padding: 0.7rem;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  background: transparent;
+  color: #704724;
+  font: 600 1rem 'Courier New', Courier, monospace;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
 
- .welcome-card {
-   background-color: #fff;
-   border-radius: 8px;
-   padding: 2rem;
-   box-shadow: 0 4px 12px rgba(139, 94, 52, 0.15);
-   font-family: 'Courier New', Courier, monospace;
- }
+.tab-btn:hover,
+.tab-btn.active {
+  background-color: #faf3e8;
+}
 
- .welcome-card h1 {
-   color: #8b5e34;
-   margin-bottom: 0.8rem;
- }
+.tab-btn.active {
+  border-bottom-color: #8b5e34;
+  color: #8b5e34;
+}
 
- .welcome-card p {
-   line-height: 1.6;
- }
+.login-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
 
- .logout-link {
-   display: inline-block;
-   padding: 0.65rem 1.4rem;
-   border-radius: 999px;
-   background-color: #8b5e34;
-   color: #fff;
-   text-decoration: none;
-   font: 600 0.95rem 'Courier New', Courier, monospace;
- }
+.login-box form.hidden {
+  display: none;
+}
+
+.login-box label {
+  margin-top: 0.25rem;
+  color: #5a3d1f;
+  font: 600 0.9rem 'Courier New', Courier, monospace;
+}
+
+.login-box input,
+.login-box select {
+  width: 100%;
+  min-height: 2.8rem;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid #c9b9a5;
+  border-radius: 6px;
+  background-color: #fff;
+  color: #2b2118;
+  font: 1rem 'Courier New', Courier, monospace;
+}
+
+.login-box input:focus,
+.login-box select:focus {
+  outline: 2px solid rgba(139, 94, 52, 0.3);
+  border-color: #8b5e34;
+}
+
+.login-box input:disabled,
+.login-box select:disabled {
+  background-color: #f1f1f1;
+  color: #888;
+  cursor: not-allowed;
+}
+
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper input {
+  padding-right: 2.8rem;
+}
+
+#togglePassword {
+  position: absolute;
+  right: 0.7rem;
+  border: 0;
+  background: transparent;
+  color: #8b5e34;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.login-box form button[type="submit"] {
+  margin-top: 0.8rem;
+  padding: 0.8rem 1rem;
+  border: 0;
+  border-radius: 999px;
+  background-color: #8b5e34;
+  color: #fff;
+  font: 600 1rem 'Courier New', Courier, monospace;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.login-box form button[type="submit"]:hover {
+  background-color: #704724;
+  transform: translateY(-1px);
+}
+
+.error-text {
+  color: #b42318;
+  font-size: 0.85rem;
+}
+
+.dashboard {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+}
+
+.welcome-card {
+  padding: 2rem;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(139, 94, 52, 0.15);
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.welcome-card h1 {
+  margin-bottom: 0.8rem;
+  color: #8b5e34;
+}
+
+.welcome-card p {
+  line-height: 1.6;
+}
+
+.logout-link {
+  display: inline-block;
+  padding: 0.65rem 1.4rem;
+  border-radius: 999px;
+  background-color: #8b5e34;
+  color: #fff;
+  text-decoration: none;
+  font: 600 0.95rem 'Courier New', Courier, monospace;
+}
+
+@media (max-width: 600px) {
+  .login-box {
+    padding: 1.6rem 1.25rem;
+  }
+}

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Genshin Impact - Home</title>>
+    <title>Genshin Impact - Home</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -25,19 +25,74 @@
 <div id="loginPopup" class="popup hidden">
     <div class="login-box">
         <span id="closeButton">&times;</span>
-        <h2>Login</h2>
-       <form id="loginForm" method="POST" action="login.php">
+
+        <div class="tabs">
+            <button type="button" class="tab-btn active" data-target="loginForm">Login</button>
+            <button type="button" class="tab-btn" data-target="registerForm">Register</button>
+        </div>
+
+        <!-- FORM LOGIN -->
+        <form id="loginForm" method="POST" action="login.php">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
+
             <label for="password">Password:</label>
             <div class="password-wrapper">
                 <input type="password" id="password" name="password" required>
                 <button type="button" id="togglePassword">&#128065;</button>
             </div>
+
             <button type="submit">Login</button>
+        </form>
+
+        <!-- FORM REGISTER -->
+        <form id="registerForm" method="POST" action="register.php" class="hidden">
+            <label for="nama">Nama:</label>
+            <input type="text" id="nama" name="nama" required>
+
+            <label for="jenisKelamin">Jenis Kelamin:</label>
+            <select id="jenisKelamin" name="jenis_kelamin" required>
+                <option value="">-- Pilih --</option>
+                <option value="Laki-laki">Laki-laki</option>
+                <option value="Perempuan">Perempuan</option>
+            </select>
+
+            <label for="tanggalLahir">Tanggal Lahir:</label>
+            <input type="date" id="tanggalLahir" name="tanggal_lahir" required>
+
+            <label for="regUsername">Username:</label>
+            <input type="text" id="regUsername" name="username" required>
+
+            <label for="regPassword">Password:</label>
+            <input type="password" id="regPassword" name="password" required>
+
+            <label for="regKonfirmasi">Konfirmasi Password:</label>
+            <input type="password" id="regKonfirmasi" name="konfirmasi" required>
+
+            <label for="provinsi">Provinsi:</label>
+            <select id="provinsi" name="provinsi" required>
+                <option value="">-- Pilih Provinsi --</option>
+            </select>
+
+            <label for="kabupaten">Kabupaten/Kota:</label>
+            <select id="kabupaten" name="kabupaten" required disabled>
+                <option value="">-- Pilih Kabupaten/Kota --</option>
+            </select>
+
+            <label for="kecamatan">Kecamatan:</label>
+            <select id="kecamatan" name="kecamatan" required disabled>
+                <option value="">-- Pilih Kecamatan --</option>
+            </select>
+
+            <label for="desa">Desa/Kelurahan:</label>
+            <select id="desa" name="desa" required disabled>
+                <option value="">-- Pilih Desa --</option>
+            </select>
+
+            <button type="submit">Daftar</button>
         </form>
     </div>
 </div>
-<script src="script.js"></script>
+<script src="script.js?v=2"></script>
 </body>
 </html>
